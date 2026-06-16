@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List 4 – Suffix -ous 🚀</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f0f4ff;
+    --card: #ffffff;
+    --primary: #4c6ef5;
+    --accent: #ff6b6b;
+    --green: #51cf66;
+    --yellow: #ffd43b;
+    --purple: #845ef7;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px 16px 40px;
+  }
+
+  h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .subtitle { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+
+  .tabs {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .tab {
+    padding: 8px 18px; border-radius: 50px; border: 2px solid var(--primary);
+    background: transparent; color: var(--primary); font-family: 'Nunito', sans-serif;
+    font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+  }
+  .tab.active, .tab:hover { background: var(--primary); color: white; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* WORD CARDS */
+  .words-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .word-card {
+    background: var(--card); border-radius: var(--radius); padding: 14px 12px;
+    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; border: 2px solid transparent;
+  }
+  .word-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .word-card.flipped { border-color: var(--primary); background: #eef1ff; }
+  .word-root { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .word-main { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--primary); margin-bottom: 6px; }
+  .word-def { font-size: 0.75rem; color: var(--text); line-height: 1.3; display: none; }
+  .word-card.flipped .word-def { display: block; }
+  .word-hint { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+  .word-card.flipped .word-hint { display: none; }
+
+  .btn-word-listen {
+    margin-top: 8px;
+    background: #eef1ff;
+    border: none;
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-word-listen:hover { background: var(--primary); }
+
+  /* SENTENCES - READING PRACTICE */
+  .reading-intro {
+    background: linear-gradient(135deg, #4c6ef511, #845ef711);
+    border-radius: var(--radius); padding: 16px; margin-bottom: 18px;
+    border: 1px solid #c7d2fe;
+  }
+  .reading-intro-title { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+  .reading-steps { display: flex; flex-direction: column; gap: 6px; }
+  .reading-step { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; line-height: 1.4; }
+  .step-num {
+    background: var(--primary); color: white; border-radius: 50%; width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.75rem; flex-shrink: 0;
+  }
+
+  .sentence-card {
+    background: var(--card); border-radius: var(--radius); padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-left: 4px solid var(--primary);
+    margin-bottom: 14px;
+  }
+  .sentence-card.own { border-left-color: var(--purple); }
+
+  .sentence-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+  }
+  .sentence-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+    font-weight: 700; color: var(--muted);
+  }
+  .sentence-actions { display: flex; gap: 6px; }
+
+  .btn-listen, .btn-record {
+    border: none; border-radius: 50px; padding: 5px 12px;
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.78rem;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px;
+  }
+  .btn-listen { background: #eef1ff; color: var(--primary); }
+  .btn-listen:hover { background: var(--primary); color: white; }
+  .btn-listen.playing { background: var(--primary); color: white; }
+
+  .btn-record { background: #fff0f0; color: var(--accent); }
+  .btn-record:hover { background: var(--accent); color: white; }
+  .btn-record.recording { background: var(--accent); color: white; animation: pulse 1s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.6; }
+  }
+
+  .sentence-text {
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.05rem;
+    line-height: 1.6; color: var(--text); margin-bottom: 8px;
+  }
+  .sentence-text .keyword { color: var(--accent); }
+
+  .sentence-tip { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-bottom: 8px; }
+
+  /* FEEDBACK PANEL */
+  .feedback-panel {
+    border-radius: 10px; padding: 10px 14px; font-size: 0.85rem; line-height: 1.5;
+    display: none; margin-top: 8px;
+  }
+  .feedback-panel.show { display: block; }
+  .feedback-panel.good { background: #d3f9d8; border-left: 3px solid var(--green); color: #1a7a30; }
+  .feedback-panel.ok { background: #fff9db; border-left: 3px solid var(--yellow); color: #7a5c00; }
+  .feedback-panel.retry { background: #ffe3e3; border-left: 3px solid var(--accent); color: #c0392b; }
+  .feedback-panel.listening { background: #eef1ff; border-left: 3px solid var(--primary); color: var(--primary); }
+
+  .feedback-heard { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  /* WORD HIGHLIGHT in feedback */
+  .highlight-word { background: #ffd43b; border-radius: 3px; padding: 0 3px; font-weight: 700; color: #000; }
+
+  /* QUIZ */
+  .quiz-container { max-width: 480px; margin: 0 auto; }
+  .quiz-progress { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; font-weight: 600; }
+  .quiz-card {
+    background: var(--card); border-radius: var(--radius); padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.09); margin-bottom: 16px; text-align: center;
+  }
+  .quiz-question { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .quiz-word { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; }
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .quiz-option {
+    padding: 12px 8px; border-radius: 12px; border: 2px solid #e5e7eb; background: white;
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.2s; line-height: 1.3;
+  }
+  .quiz-option:hover { border-color: var(--primary); background: #eef1ff; }
+  .quiz-option.correct { border-color: var(--green); background: #d3f9d8; color: #1a7a30; }
+  .quiz-option.wrong { border-color: var(--accent); background: #ffe3e3; color: #c0392b; }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-feedback { text-align: center; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; min-height: 32px; margin-bottom: 8px; }
+  .quiz-feedback.ok { color: var(--green); }
+  .quiz-feedback.nope { color: var(--accent); }
+
+  .btn-next {
+    display: block; width: 100%; padding: 13px; background: var(--primary);
+    color: white; border: none; border-radius: 50px; font-family: 'Nunito', sans-serif;
+    font-weight: 800; font-size: 1rem; cursor: pointer; transition: background 0.2s;
+  }
+  .btn-next:hover { background: #3b5bdb; }
+  .btn-next:disabled { background: #c5cae9; cursor: default; }
+
+  .score-box { text-align: center; background: var(--card); border-radius: var(--radius); padding: 28px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); }
+  .score-emoji { font-size: 3rem; margin-bottom: 8px; }
+  .score-num { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 2.5rem; color: var(--primary); }
+  .score-msg { color: var(--muted); margin-top: 6px; margin-bottom: 16px; }
+
+  .tips-box {
+    background: linear-gradient(135deg, #667eea22, #764ba222); border-radius: var(--radius);
+    padding: 18px; margin-bottom: 16px; border: 1px solid #c7d2fe;
+  }
+  .tips-title { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--purple); margin-bottom: 10px; font-size: 1rem; }
+  .tip-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 0.88rem; line-height: 1.4; }
+  .tip-icon { flex-shrink: 0; font-size: 1rem; }
+
+  .section-title {
+    font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem;
+    color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+
+  .voice-badge {
+    display: inline-flex; align-items: center; gap: 5px; background: #1a1a2e;
+    color: #ffd43b; border-radius: 50px; padding: 3px 10px; font-size: 0.72rem;
+    font-weight: 700; letter-spacing: 0.04em; margin-left: 8px;
+  }
+
+  .speed-control {
+    display: flex; align-items: center; gap: 8px; margin-top: 14px;
+    background: white; border-radius: 12px; padding: 10px 14px;
+  }
+  .speed-label { font-size: 1.1rem; }
+  .speed-value {
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
+    color: var(--primary); min-width: 52px; text-align: center;
+    background: #eef1ff; border-radius: 50px; padding: 3px 10px;
+  }
+  #speedSlider {
+    flex: 1; accent-color: var(--primary); height: 6px; cursor: pointer;
+  }
+
+  .no-speech-note {
+    background: #fff9db; border-radius: 10px; padding: 10px 14px;
+    font-size: 0.8rem; color: #7a5c00; margin-bottom: 14px; display: none;
+  }
+
+  /* ── DICTATION ── */
+  .dict-container { max-width: 480px; margin: 0 auto; }
+  .dict-progress { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; font-weight: 600; }
+
+  .dict-card {
+    background: var(--card); border-radius: var(--radius); padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.09); margin-bottom: 16px; text-align: center;
+  }
+  .dict-instruction {
+    font-size: 0.82rem; color: var(--muted); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px;
+  }
+  .dict-hint { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; font-style: italic; }
+
+  .btn-dict-play {
+    background: var(--primary); color: white; border: none; border-radius: 50px;
+    padding: 12px 28px; font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-bottom: 20px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-dict-play:hover { background: #3b5bdb; }
+  .btn-dict-play.playing { background: #845ef7; }
+
+  .dict-attempts {
+    display: flex; justify-content: center; gap: 8px; margin-bottom: 16px;
+  }
+  .attempt-dot {
+    width: 12px; height: 12px; border-radius: 50%; background: #e5e7eb;
+    transition: background 0.3s;
+  }
+  .attempt-dot.used { background: var(--accent); }
+  .attempt-dot.left { background: var(--green); }
+
+  .dict-input-row {
+    display: flex; gap: 8px; justify-content: center; margin-bottom: 14px;
+  }
+  .dict-input {
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.3rem;
+    border: 2px solid #e5e7eb; border-radius: 12px; padding: 10px 16px;
+    width: 100%; text-align: center; outline: none; transition: border-color 0.2s;
+    letter-spacing: 0.08em;
+  }
+  .dict-input:focus { border-color: var(--primary); }
+  .dict-input.shake {
+    animation: shake 0.4s;
+  }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
+  }
+
+  .btn-dict-check {
+    background: var(--green); color: white; border: none; border-radius: 50px;
+    padding: 11px 28px; font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 0.95rem; cursor: pointer; transition: background 0.2s; width: 100%;
+  }
+  .btn-dict-check:hover { background: #40c057; }
+  .btn-dict-check:disabled { background: #c5cae9; cursor: default; }
+
+  /* Letter-by-letter result */
+  .dict-letter-row {
+    display: flex; justify-content: center; gap: 4px; flex-wrap: wrap;
+    margin-bottom: 12px; min-height: 44px;
+  }
+  .dict-letter {
+    width: 32px; height: 40px; border-radius: 8px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900;
+    font-size: 1.1rem; border: 2px solid #e5e7eb; background: white;
+    transition: all 0.3s;
+  }
+  .dict-letter.correct-l { background: #d3f9d8; border-color: var(--green); color: #1a7a30; }
+  .dict-letter.wrong-l   { background: #ffe3e3; border-color: var(--accent); color: #c0392b; }
+  .dict-letter.missing-l { background: #fff9db; border-color: var(--yellow); color: #7a5c00; }
+
+  .dict-feedback {
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    text-align: center; min-height: 28px; margin-bottom: 10px;
+  }
+  .dict-feedback.ok   { color: var(--green); }
+  .dict-feedback.nope { color: var(--accent); }
+  .dict-feedback.warn { color: #e67700; }
+
+  .dict-reveal {
+    font-size: 0.85rem; color: var(--muted); text-align: center;
+    margin-bottom: 10px; display: none;
+  }
+  .dict-reveal span { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+</style>
+</head>
+<body>
+
+<h1>📚 List 4 – Suffix <span style="color:var(--accent)">-ous</span></h1>
+<p class="subtitle">T2 · Material World · Saint George's College</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('words', this)">📖 Words</button>
+  <button class="tab" onclick="showSection('sentences', this)">🎙️ Read Aloud</button>
+  <button class="tab" onclick="showSection('own', this)">⭐ My Own</button>
+  <button class="tab" onclick="showSection('quiz', this)">🎮 Quiz</button>
+  <button class="tab" onclick="showSection('dictation', this)">✏️ Dictation</button>
+</div>
+
+<!-- SECTION 1: WORDS -->
+<div id="words" class="section active">
+  <div class="tips-box">
+    <div class="tips-title">🧠 The trick: suffix -ous = adjective!</div>
+    <div class="tip-item"><span class="tip-icon">💡</span><span>All 12 words are <strong>adjectives</strong> made by adding <strong>-ous</strong> to a root word.</span></div>
+    <div class="tip-item"><span class="tip-icon">👆</span><span>Tap each card to see the definition. Try to say it before flipping!</span></div>
+  </div>
+  <div class="words-grid" id="wordsGrid"></div>
+</div>
+
+<!-- SECTION 2: READ ALOUD -->
+<div id="sentences" class="section">
+  <div class="reading-intro">
+    <div class="reading-intro-title">🎙️ Read Aloud Practice <span class="voice-badge">🇬🇧 British English</span></div>
+    <div class="reading-steps">
+      <div class="reading-step"><div class="step-num">1</div><span>Tap <strong>🔊 Listen</strong> to hear the sentence in British English</span></div>
+      <div class="reading-step"><div class="step-num">2</div><span>Tap <strong>🎙️ My turn</strong> and read the sentence out loud</span></div>
+      <div class="reading-step"><div class="step-num">3</div><span>See if your pronunciation was <strong>✅ Great</strong>, <strong>👍 Good</strong> or needs more practice</span></div>
+    </div>
+    <div class="speed-control">
+      <label class="speed-label">🐢 Speed</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.2" step="0.05" value="0.88"
+        oninput="updateSpeed(this.value)">
+      <label class="speed-label">🐇</label>
+      <span class="speed-value" id="speedValue">Normal</span>
+    </div>
+  </div>
+  <div class="no-speech-note" id="noSpeechNote">
+    ⚠️ Your browser may not support speech recognition. Try <strong>Chrome</strong> for the best experience!
+  </div>
+  <div id="sentenceList"></div>
+</div>
+
+<!-- SECTION 3: OWN SENTENCES -->
+<div id="own" class="section">
+  <div class="tips-box">
+    <div class="tips-title">⭐ 4 words to create your OWN sentences</div>
+    <div class="tip-item"><span class="tip-icon">📌</span><span>On the exam you pick <strong>2 of these 4</strong> and write your own sentence for each.</span></div>
+    <div class="tip-item"><span class="tip-icon">✅</span><span>Practice with all 4 so you're ready for any combo!</span></div>
+  </div>
+  <div id="ownList"></div>
+</div>
+
+<!-- SECTION 4: QUIZ -->
+<div id="quiz" class="section">
+  <div class="quiz-container">
+    <div class="quiz-progress" id="quizProgress">Question 1 of 12</div>
+    <div id="quizArea"></div>
+  </div>
+</div>
+
+<!-- SECTION 5: DICTATION -->
+<div id="dictation" class="section">
+  <div class="dict-container">
+    <div class="dict-progress" id="dictProgress">Word 1 of 12</div>
+    <div id="dictArea"></div>
+  </div>
+</div>
+
+<script>
+const words = [
+  { root: "fame", word: "famous", def: "known about by many people", sentence: "He became famous for his role in Spider-Man.", exam: true },
+  { root: "danger", word: "dangerous", def: "likely to injure or harm somebody, or to damage or destroy something", sentence: "Lions are dangerous animals if they feel threatened.", exam: true },
+  { root: "mystery", word: "mysterious", def: "difficult to understand or explain; strange", sentence: "There was a mysterious noise coming from the attic at night.", exam: true },
+  { root: "enormity", word: "enormous", def: "extremely large", sentence: "The blue whale is an enormous animal that lives in the ocean.", exam: true },
+  { root: "delight", word: "delicious", def: "having a very pleasant taste or smell", sentence: "My grandmother baked a delicious chocolate cake for my birthday.", exam: true },
+  { root: "suspicion", word: "suspicious", def: "feeling that somebody has done something wrong, illegal or dishonest, without any proof", sentence: "Lily was suspicious when her brother smiled and hid something behind him.", exam: true },
+  { root: "courage", word: "courageous", def: "showing courage", sentence: "He had to make a courageous decision.", exam: true },
+  { root: "poison", word: "poisonous", def: "causing death or illness if swallowed or taken into the body", sentence: "Some mushrooms are poisonous, so you should never eat wild ones without help.", exam: true },
+  { root: "generosity", word: "generous", def: "giving or willing to give freely; given freely", sentence: "The generous boy shared his lunch with his friend.", exam: false },
+  { root: "nervousness", word: "nervous", def: "anxious about something or afraid of something", sentence: "Mia felt nervous before speaking in front of the class.", exam: false },
+  { root: "seriousness", word: "serious", def: "not joking or playful", sentence: "The doctor had a serious conversation with the patient's family.", exam: false },
+  { root: "Fabulousness", word: "fabulous", def: "extremely good", sentence: "We had a fabulous time at the beach during the holidays.", exam: false },
+];
+
+const ownSentenceExamples = [
+  { word: "generous", example: "My dad is very generous because he always helps people in need.", tip: "Think of someone you know who is generous!" },
+  { word: "nervous", example: "I felt nervous on my first day at a new school.", tip: "Write about a time YOU felt nervous." },
+  { word: "serious", example: "The teacher was serious when she explained the safety rules.", tip: "Think of a serious moment you've seen." },
+  { word: "fabulous", example: "We had a fabulous adventure in the jungle with my family.", tip: "Write about something AMAZING that happened to you!" },
+];
+
+// ── SPEECH RATE ───────────────────────────────────────────────────────────
+let speechRate = 0.88;
+
+function updateSpeed(val) {
+  speechRate = parseFloat(val);
+  const labels = { 0.5: 'Very slow', 0.6: 'Slow', 0.7: 'Slow', 0.75: 'Slow', 0.8: 'Normal', 0.85: 'Normal', 0.88: 'Normal', 0.9: 'Normal', 0.95: 'Fast', 1.0: 'Fast', 1.05: 'Faster', 1.1: 'Fast', 1.15: 'Faster', 1.2: 'Fastest' };
+  const closest = Object.keys(labels).reduce((a, b) => Math.abs(b - val) < Math.abs(a - val) ? b : a);
+  document.getElementById('speedValue').textContent = labels[closest] || 'Normal';
+}
+
+// ── SPEECH SYNTHESIS (British English) ────────────────────────────────────
+let britishVoice = null;
+let voicesLoaded = false;
+
+function loadBritishVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return;
+  voicesLoaded = true;
+  // Priority: en-GB voices
+  const gbVoices = voices.filter(v => v.lang === 'en-GB');
+  // Prefer Google UK English Female or similar quality voice
+  britishVoice = gbVoices.find(v => v.name.toLowerCase().includes('female'))
+    || gbVoices.find(v => v.name.toLowerCase().includes('google'))
+    || gbVoices[0]
+    || voices.find(v => v.lang.startsWith('en'))
+    || voices[0];
+}
+
+window.speechSynthesis.onvoiceschanged = loadBritishVoice;
+loadBritishVoice();
+
+function speakText(text, btn) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+
+  if (!voicesLoaded) loadBritishVoice();
+
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'en-GB';
+  utt.rate = speechRate;
+  utt.pitch = 1.0;
+  if (britishVoice) utt.voice = britishVoice;
+
+  if (btn) {
+    btn.classList.add('playing');
+    btn.textContent = '⏹ Stop';
+    utt.onend = () => { btn.classList.remove('playing'); btn.innerHTML = '🔊 Listen'; };
+    btn.onclick = () => { window.speechSynthesis.cancel(); btn.classList.remove('playing'); btn.innerHTML = '🔊 Listen'; btn.onclick = () => speakText(text, btn); };
+  }
+  window.speechSynthesis.speak(utt);
+}
+
+// ── SPEECH RECOGNITION ────────────────────────────────────────────────────
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let activeRecordBtn = null;
+
+if (!SpeechRecognition) {
+  document.getElementById('noSpeechNote').style.display = 'block';
+} else {
+  recognition = new SpeechRecognition();
+  recognition.lang = 'en-GB';
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 3;
+}
+
+function normalize(str) {
+  return str.toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function scorePronunciation(expected, heard) {
+  const expWords = normalize(expected).split(' ');
+  const heardWords = normalize(heard).split(' ');
+  let matched = 0;
+  expWords.forEach(w => { if (heardWords.includes(w)) matched++; });
+  return matched / expWords.length;
+}
+
+function findMissingWords(expected, heard) {
+  const expWords = normalize(expected).split(' ');
+  const heardWords = normalize(heard).split(' ');
+  return expWords.filter(w => !heardWords.includes(w));
+}
+
+function startRecording(btn, sentence, keyword, feedbackEl) {
+  if (!recognition) return;
+
+  if (activeRecordBtn && activeRecordBtn !== btn) {
+    activeRecordBtn.classList.remove('recording');
+    activeRecordBtn.innerHTML = '🎙️ My turn';
+    recognition.abort();
+  }
+
+  if (btn.classList.contains('recording')) {
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎙️ My turn';
+    recognition.abort();
+    activeRecordBtn = null;
+    return;
+  }
+
+  btn.classList.add('recording');
+  btn.innerHTML = '⏹ Stop';
+  activeRecordBtn = btn;
+
+  feedbackEl.className = 'feedback-panel show listening';
+  feedbackEl.innerHTML = '🎙️ Listening... read the sentence out loud!';
+
+  recognition.onresult = (e) => {
+    const results = Array.from(e.results[0]).map(r => r.transcript);
+    const best = results[0];
+    const score = Math.max(...results.map(r => scorePronunciation(sentence, r)));
+    const missing = findMissingWords(sentence, best);
+    const keywordOk = normalize(best).includes(normalize(keyword));
+
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎙️ My turn';
+    activeRecordBtn = null;
+
+    let html = '';
+    if (score >= 0.85 && keywordOk) {
+      feedbackEl.className = 'feedback-panel show good';
+      html = `✅ <strong>Excellent!</strong> Great pronunciation!`;
+    } else if (score >= 0.6) {
+      feedbackEl.className = 'feedback-panel show ok';
+      html = `👍 <strong>Good try!</strong>`;
+      if (!keywordOk) html += ` Try saying <span class="highlight-word">${keyword}</span> more clearly.`;
+      else if (missing.length) html += ` Watch out for: <span class="highlight-word">${missing.slice(0,3).join(', ')}</span>`;
+      html += `<br><small>💡 Tap 🔊 Listen to hear it again, then try once more!</small>`;
+    } else {
+      feedbackEl.className = 'feedback-panel show retry';
+      html = `🔄 <strong>Let's try again!</strong> Listen carefully first, then repeat.`;
+      if (!keywordOk) html += ` Focus on the word: <span class="highlight-word">${keyword}</span>`;
+      speakText(sentence, null);
+    }
+
+    if (best) {
+      html += `<div class="feedback-heard">I heard: "<em>${best}</em>"</div>`;
+    }
+    feedbackEl.innerHTML = html;
+  };
+
+  recognition.onerror = (e) => {
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎙️ My turn';
+    activeRecordBtn = null;
+    feedbackEl.className = 'feedback-panel show ok';
+    if (e.error === 'no-speech') {
+      feedbackEl.innerHTML = '🤫 No speech detected. Make sure your mic is on and try again!';
+    } else if (e.error === 'not-allowed') {
+      feedbackEl.innerHTML = '🎤 Microphone access denied. Please allow mic access in your browser.';
+    } else {
+      feedbackEl.innerHTML = `⚠️ Error: ${e.error}. Please try again.`;
+    }
+  };
+
+  recognition.onend = () => {
+    if (btn.classList.contains('recording')) {
+      btn.classList.remove('recording');
+      btn.innerHTML = '🎙️ My turn';
+      activeRecordBtn = null;
+    }
+  };
+
+  try { recognition.start(); } catch(e) { /* already started */ }
+}
+
+// ── RENDER WORD CARDS ─────────────────────────────────────────────────────
+const grid = document.getElementById('wordsGrid');
+words.forEach(w => {
+  const card = document.createElement('div');
+  card.className = 'word-card';
+  card.innerHTML = `
+    <div class="word-root">${w.root} →</div>
+    <div class="word-main">${w.word}</div>
+    <div class="word-def">${w.def}</div>
+    <div class="word-hint">tap to flip</div>
+    <button class="btn-word-listen" onclick="event.stopPropagation(); playWord('${w.word}', this)">🔊</button>
+  `;
+  card.onclick = () => card.classList.toggle('flipped');
+  grid.appendChild(card);
+});
+
+function playWord(word, btn) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  if (!voicesLoaded) loadBritishVoice();
+  const utt = new SpeechSynthesisUtterance(word);
+  utt.lang = 'en-GB';
+  utt.rate = 0.82;
+  utt.pitch = 1.0;
+  if (britishVoice) utt.voice = britishVoice;
+  btn.textContent = '🔉';
+  utt.onend = () => { btn.textContent = '🔊'; };
+  window.speechSynthesis.speak(utt);
+}
+
+// ── RENDER SENTENCE CARDS (with listen + record) ──────────────────────────
+const sentList = document.getElementById('sentenceList');
+words.filter(w => w.exam).forEach((w, i) => {
+  const highlighted = w.sentence.replace(
+    new RegExp(`\\b${w.word}\\b`, 'gi'),
+    `<span class="keyword">${w.word}</span>`
+  );
+  const cardId = `sent-${i}`;
+  const feedId = `feed-${i}`;
+
+  const card = document.createElement('div');
+  card.className = 'sentence-card';
+  card.innerHTML = `
+    <div class="sentence-header">
+      <div class="sentence-label">Sentence ${i+1} · <strong>${w.word}</strong></div>
+      <div class="sentence-actions">
+        <button class="btn-listen" id="listen-${i}" onclick="speakText('${w.sentence.replace(/'/g,"\\'")}', this)">🔊 Listen</button>
+        ${recognition ? `<button class="btn-record" id="rec-${i}">🎙️ My turn</button>` : ''}
+      </div>
+    </div>
+    <div class="sentence-text">${highlighted}</div>
+    <div class="sentence-tip">Root: <strong>${w.root}</strong> → +ous = <strong>${w.word}</strong></div>
+    <div class="feedback-panel" id="${feedId}"></div>
+  `;
+  sentList.appendChild(card);
+
+  if (recognition) {
+    const recBtn = card.querySelector(`#rec-${i}`);
+    const feedEl = card.querySelector(`#${feedId}`);
+    recBtn.onclick = () => startRecording(recBtn, w.sentence, w.word, feedEl);
+  }
+});
+
+// ── RENDER OWN SENTENCES ─────────────────────────────────────────────────
+const ownList = document.getElementById('ownList');
+ownSentenceExamples.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'sentence-card own';
+  card.innerHTML = `
+    <div class="sentence-label">✍️ Your word: "${item.word}"</div>
+    <div class="sentence-text">Example: <em>${item.example}</em></div>
+    <div class="sentence-tip">💡 ${item.tip}</div>
+  `;
+  ownList.appendChild(card);
+});
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────
+let quizIndex = 0, score = 0, answered = false, shuffled = [];
+
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function startQuiz() {
+  shuffled = shuffle(words); quizIndex = 0; score = 0; renderQuiz();
+}
+
+function renderQuiz() {
+  const area = document.getElementById('quizArea');
+  document.getElementById('quizProgress').textContent = `Question ${quizIndex + 1} of ${shuffled.length}`;
+  if (quizIndex >= shuffled.length) {
+    const pct = Math.round((score / shuffled.length) * 100);
+    const emoji = pct >= 80 ? '🌟' : pct >= 60 ? '👍' : '💪';
+    const msg = pct >= 80 ? "Amazing! You're ready for the exam!" : pct >= 60 ? 'Good job! Review the ones you missed.' : "Keep practising — you've got this!";
+    area.innerHTML = `<div class="score-box"><div class="score-emoji">${emoji}</div><div class="score-num">${score}/${shuffled.length}</div><div class="score-msg">${msg}</div><button class="btn-next" onclick="startQuiz()">Play Again 🔁</button></div>`;
+    document.getElementById('quizProgress').textContent = 'Results!';
+    return;
+  }
+  const current = shuffled[quizIndex];
+  const others = shuffle(words.filter(w => w.word !== current.word)).slice(0, 3);
+  const options = shuffle([current, ...others]);
+  answered = false;
+  area.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-question">What does this word mean?</div>
+      <div class="quiz-word">${current.word}</div>
+      <div class="quiz-options">${options.map(o => `<button class="quiz-option" onclick="answer(this,'${o.word}','${current.word}')">${o.def}</button>`).join('')}</div>
+    </div>
+    <div class="quiz-feedback" id="qfeedback"></div>
+    <button class="btn-next" id="btnNext" onclick="nextQ()" disabled>Next →</button>`;
+}
+
+function answer(btn, chosen, correct) {
+  if (answered) return;
+  answered = true;
+  document.querySelectorAll('.quiz-option').forEach(b => b.disabled = true);
+  const feedback = document.getElementById('qfeedback');
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    feedback.textContent = '✅ Correct!';
+    feedback.className = 'quiz-feedback ok';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.quiz-option').forEach(b => { if (b.textContent.trim() === shuffled[quizIndex].def) b.classList.add('correct'); });
+    feedback.textContent = '❌ Not quite — see the correct one in green!';
+    feedback.className = 'quiz-feedback nope';
+  }
+  document.getElementById('btnNext').disabled = false;
+}
+
+function nextQ() { quizIndex++; renderQuiz(); }
+
+// ── DICTATION ─────────────────────────────────────────────────────────────
+let dictShuffled = [], dictIndex = 0, dictScore = 0, dictAttempts = 0, dictDone = false;
+const MAX_ATTEMPTS = 3;
+
+function startDictation() {
+  dictShuffled = shuffle(words);
+  dictIndex = 0; dictScore = 0;
+  renderDictation();
+}
+
+function renderDictation() {
+  const area = document.getElementById('dictArea');
+  document.getElementById('dictProgress').textContent = `Word ${dictIndex + 1} of ${dictShuffled.length}`;
+
+  if (dictIndex >= dictShuffled.length) {
+    const pct = Math.round((dictScore / dictShuffled.length) * 100);
+    const emoji = pct >= 80 ? '🌟' : pct >= 60 ? '👍' : '💪';
+    const msg = pct >= 80 ? "Amazing spelling! You're ready!" : pct >= 60 ? 'Good job! Keep practising the tricky ones.' : "Keep going — spelling takes practice!";
+    area.innerHTML = `<div class="score-box"><div class="score-emoji">${emoji}</div><div class="score-num">${dictScore}/${dictShuffled.length}</div><div class="score-msg">${msg}</div><button class="btn-next" onclick="startDictation()">Play Again 🔁</button></div>`;
+    document.getElementById('dictProgress').textContent = 'Results!';
+    return;
+  }
+
+  const w = dictShuffled[dictIndex];
+  dictAttempts = 0; dictDone = false;
+
+  area.innerHTML = `
+    <div class="dict-card">
+      <div class="dict-instruction">🎧 Listen and spell the word!</div>
+      <div class="dict-hint">Hint: it means "<em>${w.def}</em>"</div>
+      <button class="btn-dict-play" id="btnDictPlay" onclick="playDictWord('${w.word}', this)">
+        🔊 Hear the word
+      </button>
+      <div class="dict-attempts" id="dictDots">
+        <div class="attempt-dot left" title="Attempt 1"></div>
+        <div class="attempt-dot left" title="Attempt 2"></div>
+        <div class="attempt-dot left" title="Attempt 3"></div>
+      </div>
+      <div class="dict-letter-row" id="dictLetters"></div>
+      <div class="dict-feedback" id="dictFeedback"></div>
+      <div class="dict-reveal" id="dictReveal">The word was: <span>${w.word}</span></div>
+      <div class="dict-input-row">
+        <input class="dict-input" id="dictInput" type="text" placeholder="Type the word here…"
+          autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          onkeydown="if(event.key==='Enter') checkDict()">
+      </div>
+      <button class="btn-dict-check" id="btnDictCheck" onclick="checkDict()">✅ Check</button>
+    </div>
+    <button class="btn-next" id="btnDictNext" onclick="nextDict()" disabled>Next →</button>
+  `;
+
+  // Auto-focus input and auto-play word
+  setTimeout(() => {
+    document.getElementById('dictInput').focus();
+    playDictWord(w.word, document.getElementById('btnDictPlay'));
+  }, 400);
+}
+
+function playDictWord(word, btn) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  if (!voicesLoaded) loadBritishVoice();
+  const utt = new SpeechSynthesisUtterance(word);
+  utt.lang = 'en-GB';
+  utt.rate = 0.78;
+  utt.pitch = 1.0;
+  if (britishVoice) utt.voice = britishVoice;
+  if (btn) {
+    btn.classList.add('playing');
+    btn.innerHTML = '🔉 Playing…';
+    utt.onend = () => { btn.classList.remove('playing'); btn.innerHTML = '🔊 Hear again'; };
+  }
+  window.speechSynthesis.speak(utt);
+}
+
+function checkDict() {
+  if (dictDone) return;
+  const input = document.getElementById('dictInput');
+  const typed = input.value.trim().toLowerCase();
+  if (!typed) return;
+
+  const correct = dictShuffled[dictIndex].word.toLowerCase();
+  dictAttempts++;
+
+  // Update dots
+  const dots = document.querySelectorAll('.attempt-dot');
+  dots[dictAttempts - 1].classList.remove('left');
+  dots[dictAttempts - 1].classList.add('used');
+
+  // Build letter comparison
+  const lettersRow = document.getElementById('dictLetters');
+  lettersRow.innerHTML = '';
+  const maxLen = Math.max(correct.length, typed.length);
+  let allCorrect = true;
+  for (let i = 0; i < maxLen; i++) {
+    const div = document.createElement('div');
+    div.className = 'dict-letter';
+    if (i < typed.length && i < correct.length) {
+      if (typed[i] === correct[i]) {
+        div.classList.add('correct-l');
+        div.textContent = typed[i];
+      } else {
+        div.classList.add('wrong-l');
+        div.textContent = typed[i];
+        allCorrect = false;
+      }
+    } else if (i < typed.length) {
+      // Extra letters typed
+      div.classList.add('wrong-l');
+      div.textContent = typed[i];
+      allCorrect = false;
+    } else {
+      // Missing letters
+      div.classList.add('missing-l');
+      div.textContent = '?';
+      allCorrect = false;
+    }
+    lettersRow.appendChild(div);
+  }
+
+  const feedback = document.getElementById('dictFeedback');
+  const reveal = document.getElementById('dictReveal');
+  const checkBtn = document.getElementById('btnDictCheck');
+  const nextBtn = document.getElementById('btnDictNext');
+
+  if (allCorrect) {
+    dictDone = true;
+    dictScore++;
+    feedback.textContent = dictAttempts === 1 ? '🌟 Perfect! First try!' : '✅ Correct! Well done!';
+    feedback.className = 'dict-feedback ok';
+    input.disabled = true;
+    checkBtn.disabled = true;
+    nextBtn.disabled = false;
+    // Speak it once more as reward
+    setTimeout(() => playDictWord(correct, null), 500);
+  } else if (dictAttempts >= MAX_ATTEMPTS) {
+    dictDone = true;
+    feedback.textContent = '❌ No more attempts. See the correct word below!';
+    feedback.className = 'dict-feedback nope';
+    reveal.style.display = 'block';
+    input.disabled = true;
+    checkBtn.disabled = true;
+    nextBtn.disabled = false;
+    // Speak correct word
+    setTimeout(() => playDictWord(correct, null), 600);
+  } else {
+    const left = MAX_ATTEMPTS - dictAttempts;
+    feedback.textContent = left === 1 ? '⚠️ Not quite — last try! Green = correct letter ✅' : '🔄 Try again! Green letters are in the right place.';
+    feedback.className = dictAttempts === 2 ? 'dict-feedback warn' : 'dict-feedback nope';
+    input.value = '';
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 400);
+    input.focus();
+  }
+}
+
+function nextDict() { dictIndex++; renderDictation(); }
+
+function showSection(id, tabEl) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (tabEl) tabEl.classList.add('active');
+  if (id === 'quiz') startQuiz();
+  if (id === 'dictation') startDictation();
+  if (recognition) { recognition.abort(); if (activeRecordBtn) { activeRecordBtn.classList.remove('recording'); activeRecordBtn.innerHTML = '🎙️ My turn'; activeRecordBtn = null; } }
+}
+
+startQuiz();
+</script>
+</body>
+</html>
