@@ -10,15 +10,17 @@
   --bg:#f0f4ff;--card:#ffffff;--primary:#4c6ef5;--green:#2f9e44;--green-bg:#d3f9d8;
   --red:#c92a2a;--red-bg:#ffe3e3;--yellow:#f59f00;--yellow-bg:#fff3bf;
   --teal:#0c8599;--teal-bg:#e3fafc;--text:#1a1a2e;--muted:#6b7280;
-  --border:#dee2e6;--radius:14px;
+  --border:#dee2e6;--radius:14px;--purple:#7048e8;--purple-bg:#f3f0ff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:20px 16px 60px;max-width:700px;margin:0 auto}
 h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;text-align:center;color:var(--primary);margin-bottom:2px}
 .subtitle{text-align:center;color:var(--muted);font-size:.88rem;margin-bottom:22px}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
-.tab{padding:9px 18px;border-radius:50px;border:2px solid var(--primary);background:transparent;color:var(--primary);font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.tab{padding:9px 14px;border-radius:50px;border:2px solid var(--primary);background:transparent;color:var(--primary);font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;transition:all .2s}
 .tab.active,.tab:hover{background:var(--primary);color:white}
+.tab.intro-tab{border-color:var(--purple);color:var(--purple)}
+.tab.intro-tab.active,.tab.intro-tab:hover{background:var(--purple);color:white}
 .section{display:none}.section.active{display:block}
 .card{background:var(--card);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1.5px solid var(--border)}
 .card h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:6px;color:var(--text)}
@@ -27,6 +29,45 @@ h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;text-align:c
 .badge-blue{background:#dbe4ff;color:#3b5bdb}
 .badge-amber{background:var(--yellow-bg);color:#845c00}
 .badge-teal{background:var(--teal-bg);color:var(--teal)}
+.badge-purple{background:var(--purple-bg);color:var(--purple)}
+/* INTRO STYLES */
+.intro-topic{background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);margin-bottom:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.intro-topic-header{padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.intro-topic-header:hover{background:#f8f9ff}
+.intro-icon{font-size:1.6rem;min-width:36px;text-align:center}
+.intro-topic-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:var(--text)}
+.intro-topic-sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+.intro-chevron{margin-left:auto;font-size:1.1rem;color:var(--muted);transition:transform .2s}
+.intro-chevron.open{transform:rotate(180deg)}
+.intro-body{display:none;padding:0 18px 18px}
+.intro-body.open{display:block}
+.intro-section{margin-bottom:14px}
+.intro-section-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;color:var(--primary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid #dbe4ff}
+.intro-def{background:#f8f9ff;border-radius:10px;padding:11px 13px;font-size:.88rem;line-height:1.6;color:var(--text);margin-bottom:8px;border-left:3px solid var(--primary)}
+.example-box{background:var(--yellow-bg);border:1.5px solid #f59f00;border-radius:10px;padding:10px 13px;margin-bottom:8px;font-size:.87rem;line-height:1.6}
+.example-box .ex-label{font-weight:700;color:#845c00;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.example-box .ex-bad{color:var(--red);margin-bottom:4px}
+.example-box .ex-good{color:var(--green);font-weight:700}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.feature-item{background:#f0f4ff;border-radius:10px;padding:10px 12px;font-size:.84rem;border:1.5px solid #c5d0fa}
+.feature-item .fi-name{font-weight:700;color:var(--primary);margin-bottom:3px;font-size:.85rem}
+.feature-item .fi-desc{color:var(--muted);font-size:.8rem;line-height:1.4}
+.aud-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:8px}
+.aud-item{border-radius:10px;padding:10px 13px;font-size:.85rem;border:1.5px solid}
+.aud-item .ai-name{font-weight:700;margin-bottom:3px}
+.aud-item .ai-clues{font-size:.8rem;opacity:.85;line-height:1.4}
+.aud-friend{background:#fff0f6;border-color:#f783ac;color:#880e4f}
+.aud-teacher{background:#e8f4fd;border-color:#74b9ff;color:#154360}
+.aud-parent{background:#e8f8f5;border-color:#55efc4;color:#0e6655}
+.aud-young{background:#fff9e6;border-color:#f9ca24;color:#7d6608}
+.aud-public{background:#f0f0f0;border-color:#b2bec3;color:#2d3436}
+.mini-paper{background:#fafafa;border:1.5px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;font-size:.84rem;line-height:1.6}
+.mini-paper .mp-hl{font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;margin-bottom:2px}
+.mini-paper .mp-sub{color:var(--primary);font-style:italic;font-size:.82rem;margin-bottom:4px}
+.mini-paper .mp-byl{font-size:.74rem;color:var(--muted);border-bottom:1px solid var(--border);padding-bottom:5px;margin-bottom:7px}
+.mini-paper .mp-qt{border-left:3px solid var(--primary);padding-left:8px;font-style:italic;color:#555;margin:6px 0;font-size:.82rem}
+.next-btn{display:block;width:100%;padding:12px;border-radius:10px;border:none;background:var(--purple);color:white;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;margin-top:6px;text-align:center}
+.next-btn:hover{background:#5f3dc4}
 /* article switcher */
 .art-switcher{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .art-btn{padding:8px 16px;border-radius:50px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:.83rem;font-weight:700;font-family:'Nunito',sans-serif;color:var(--muted);transition:all .15s}
@@ -73,12 +114,14 @@ h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;text-align:c
 .wc-btn.bad{background:var(--red-bg);border-color:var(--red);color:var(--red)}
 textarea{width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;background:white;font-size:.9rem;color:var(--text);font-family:'Nunito Sans',sans-serif;resize:vertical;margin-top:8px}
 textarea:focus{outline:none;border-color:var(--primary)}
-.ai-box{background:#f0f4ff;border:1.5px solid #c5d0fa;border-radius:10px;padding:12px;margin-top:10px;font-size:.88rem;line-height:1.6;color:var(--text);display:none}
-.ai-label{font-size:.75rem;font-weight:700;color:var(--primary);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.fb-box{background:#f0f4ff;border:1.5px solid #c5d0fa;border-radius:10px;padding:12px;margin-top:10px;font-size:.88rem;line-height:1.6;color:var(--text);display:none}
+.fb-label{font-size:.75rem;font-weight:700;color:var(--primary);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
 .aud-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .aud-chip{padding:8px 16px;border-radius:50px;border:1.5px solid var(--border);cursor:pointer;font-size:.85rem;font-weight:700;font-family:'Nunito',sans-serif;background:white;color:var(--muted);transition:all .15s}
 .aud-chip.active{background:var(--teal-bg);border-color:var(--teal);color:var(--teal)}
 .tip{background:#fff3bf;border-radius:10px;padding:10px 13px;margin-bottom:12px;font-size:.87rem;color:#5c3800;line-height:1.5;border:1.5px solid #f59f00}
+.check-btn{width:100%;padding:11px;border-radius:10px;border:none;background:var(--green);color:white;font-family:'Nunito',sans-serif;font-weight:800;font-size:.92rem;cursor:pointer;margin-top:10px}
+.check-btn:hover{background:#237a38}
 </style>
 </head>
 <body>
@@ -87,13 +130,223 @@ textarea:focus{outline:none;border-color:var(--primary)}
 <p class="subtitle">Thiago • Grade 4 • Miss Milagros • Term 2 · 2026</p>
 
 <div class="tabs">
-  <button class="tab active" onclick="showTab('news',this)">📰 Newspaper Report</button>
+  <button class="tab intro-tab active" onclick="showTab('intro',this)">📖 Introduction</button>
+  <button class="tab" onclick="showTab('news',this)">📰 Newspaper</button>
   <button class="tab" onclick="showTab('words',this)">✏️ Overused Words</button>
-  <button class="tab" onclick="showTab('audience',this)">👥 Who Am I Writing To?</button>
+  <button class="tab" onclick="showTab('audience',this)">👥 Audience</button>
 </div>
 
-<!-- ========== SECTION 1: NEWSPAPER REPORT ========== -->
-<div class="section active" id="sec-news">
+<!-- ========== INTRO SECTION ========== -->
+<div class="section active" id="sec-intro">
+
+  <div class="card">
+    <span class="badge badge-purple">📖 Introduction</span>
+    <h2>Study the 3 topics before practising!</h2>
+    <p>Click on each topic to open it. Read carefully — there are examples to help you understand. When you're ready, go to the practice tabs! 💪</p>
+  </div>
+
+  <!-- TOPIC 1: NEWSPAPER REPORT -->
+  <div class="intro-topic">
+    <div class="intro-topic-header" onclick="toggleIntro('t1')">
+      <div class="intro-icon">📰</div>
+      <div>
+        <div class="intro-topic-title">Topic 1 — Newspaper Report</div>
+        <div class="intro-topic-sub">Features, headlines, facts & quotations</div>
+      </div>
+      <div class="intro-chevron" id="chev-t1">▼</div>
+    </div>
+    <div class="intro-body" id="body-t1">
+
+      <div class="intro-section">
+        <div class="intro-section-title">What is a Newspaper Report?</div>
+        <div class="intro-def">A newspaper report is a non-fiction text that <strong>informs</strong> readers about real events. It uses special features to grab the reader's attention and present facts clearly.</div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">Key Features</div>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="fi-name">📌 Headline</div>
+            <div class="fi-desc">Big bold title. Catchy! Uses powerful verbs or alliteration.<br><em>"Robot Dog Joins Local School!"</em></div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-name">📝 Subheading</div>
+            <div class="fi-desc">Extra detail below the headline. Gives more information.<br><em>"Students welcome new helper"</em></div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-name">✍️ Byline</div>
+            <div class="fi-desc">Who wrote it, when, and which newspaper.<br><em>"By Sam Rivera | 23 June 2026"</em></div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-name">💬 Quotation</div>
+            <div class="fi-desc">Real words from a real person. Makes it trustworthy.<br><em>"We are thrilled!" said Mrs Collins.</em></div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-name">✅ Facts</div>
+            <div class="fi-desc">Things that can be checked and proven true.<br><em>"The robot weighs 3 kg."</em></div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-name">📦 Fact Box</div>
+            <div class="fi-desc">Extra quick facts on the side. Easy to read at a glance.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">Facts vs Opinions</div>
+        <div class="example-box">
+          <div class="ex-label">⚠️ Opinion (NOT a fact)</div>
+          <div class="ex-bad">✗ "It was the most beautiful garden in the world."</div>
+          <div class="ex-bad">✗ "Everyone loved the robot."</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">✅ Fact (can be checked!)</div>
+          <div class="ex-good">✓ "The garden covers 300 square metres."</div>
+          <div class="ex-good">✓ "The robot learned five new commands."</div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">Mini example — spot the features!</div>
+        <div class="mini-paper">
+          <div class="mp-hl">Giant Pumpkin Breaks County Record!</div>
+          <div class="mp-sub">Local farmer grows pumpkin weighing over 200 kilograms</div>
+          <div class="mp-byl">By Lucy Hartman | 10 June 2026 | THE COUNTRYSIDE GAZETTE</div>
+          <p>Tom Briggs spent six months carefully growing the enormous vegetable. The pumpkin measures over one metre in height.</p>
+          <div class="mp-qt">"I couldn't believe my eyes when I put it on the scale!" said Mr Briggs.</div>
+        </div>
+        <div class="tip">🔍 Can you spot: the <strong>headline</strong>, <strong>subheading</strong>, <strong>byline</strong>, <strong>quotation</strong>, and a <strong>fact</strong>?</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOPIC 2: OVERUSED WORDS -->
+  <div class="intro-topic">
+    <div class="intro-topic-header" onclick="toggleIntro('t2')">
+      <div class="intro-icon">✏️</div>
+      <div>
+        <div class="intro-topic-title">Topic 2 — Overused Words</div>
+        <div class="intro-topic-sub">Upgrade your vocabulary!</div>
+      </div>
+      <div class="intro-chevron" id="chev-t2">▼</div>
+    </div>
+    <div class="intro-body" id="body-t2">
+
+      <div class="intro-section">
+        <div class="intro-section-title">What are Overused Words?</div>
+        <div class="intro-def">Overused words are words that writers use <strong>too often</strong>. They are boring and vague. Good writers replace them with <strong>precise, interesting</strong> alternatives that paint a clearer picture for the reader.</div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">Common Overused Words & Better Alternatives</div>
+        <div class="example-box">
+          <div class="ex-label">❌ Overused → ✅ Better alternatives</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;font-size:.85rem">
+            <div><span style="color:var(--red);font-weight:700">good</span> → excellent, brilliant, outstanding</div>
+            <div><span style="color:var(--red);font-weight:700">big</span> → enormous, gigantic, vast</div>
+            <div><span style="color:var(--red);font-weight:700">nice</span> → welcoming, pleasant, delightful</div>
+            <div><span style="color:var(--red);font-weight:700">happy</span> → delighted, thrilled, overjoyed</div>
+            <div><span style="color:var(--red);font-weight:700">interesting</span> → captivating, fascinating, gripping</div>
+            <div><span style="color:var(--red);font-weight:700">said</span> → explained, exclaimed, whispered</div>
+            <div><span style="color:var(--red);font-weight:700">looked</span> → stared, glanced, gazed</div>
+            <div><span style="color:var(--red);font-weight:700">fun</span> → thrilling, exhilarating, entertaining</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">See the difference!</div>
+        <div class="example-box">
+          <div class="ex-label">❌ Before — boring & vague</div>
+          <div class="ex-bad">"Yesterday was a <u>good</u> day. We visited a <u>big</u> museum. The guide was <u>nice</u> and I felt <u>happy</u>."</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">✅ After — precise & engaging</div>
+          <div class="ex-good">"Yesterday was an <u>outstanding</u> day. We visited an <u>enormous</u> museum. The guide was <u>welcoming</u> and I felt <u>delighted</u>."</div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">💡 Remember</div>
+        <div class="tip">Think of words like colours on a palette. More <strong>specific words</strong> make your writing more colourful and clear! But don't use a fancy word if you don't know what it means. 🎨</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOPIC 3: AUDIENCE -->
+  <div class="intro-topic">
+    <div class="intro-topic-header" onclick="toggleIntro('t3')">
+      <div class="intro-icon">👥</div>
+      <div>
+        <div class="intro-topic-title">Topic 3 — Who Am I Writing To?</div>
+        <div class="intro-topic-sub">Adapting language to your audience</div>
+      </div>
+      <div class="intro-chevron" id="chev-t3">▼</div>
+    </div>
+    <div class="intro-body" id="body-t3">
+
+      <div class="intro-section">
+        <div class="intro-section-title">What is Audience Awareness?</div>
+        <div class="intro-def">Your <strong>audience</strong> is the person (or people) you are writing for. Different audiences need <strong>different language and style</strong>. A message to your friend sounds very different from a message to your teacher!</div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">The 5 Audiences</div>
+        <div class="aud-grid">
+          <div class="aud-item aud-friend">
+            <div class="ai-name">👫 Friend</div>
+            <div class="ai-clues">Informal · casual · exclamation marks · emoji · short messages<br><em>"OMG I forgot my book again!! Can you help?? 😅"</em></div>
+          </div>
+          <div class="aud-item aud-teacher">
+            <div class="ai-name">👩‍🏫 Teacher</div>
+            <div class="ai-clues">Polite · formal · complete sentences · Dear/Thank you<br><em>"Dear Mrs Smith, I would like to ask about my homework. Thank you."</em></div>
+          </div>
+          <div class="aud-item aud-parent">
+            <div class="ai-name">👨‍👩‍👧 Parents</div>
+            <div class="ai-clues">Clear · organised · dates & details · informative<br><em>"Please sign the permission slip by Friday. The trip begins at 8:30 a.m."</em></div>
+          </div>
+          <div class="aud-item aud-young">
+            <div class="ai-name">🧒 Younger Children</div>
+            <div class="ai-clues">Simple words · short sentences · direct · positive reminders<br><em>"Walk slowly! Keep your hands by your sides. Be kind!"</em></div>
+          </div>
+          <div class="aud-item aud-public">
+            <div class="ai-name">🌍 General Public</div>
+            <div class="ai-clues">No personal language · facts · clear and concise · formal<br><em>"The library will be closed on Monday 28 June."</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">Same situation — different audience!</div>
+        <div class="tip">Situation: <strong>"You forgot your homework."</strong></div>
+        <div class="example-box" style="margin-top:8px">
+          <div class="ex-label">👫 To a Friend</div>
+          <div style="color:var(--text)">"Ugh, I forgot my homework AGAIN!! Did you remember yours?? 😬"</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">👩‍🏫 To a Teacher</div>
+          <div style="color:var(--text)">"Dear Mrs Smith, I am sorry to inform you that I forgot my homework today. I will bring it tomorrow. Thank you for your understanding."</div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-section-title">🔑 Key clues to identify the audience</div>
+        <div class="intro-def">
+          Look for: <strong>greetings</strong> (Dear/Hi/Hey), <strong>tone</strong> (formal/informal), <strong>vocabulary</strong> (simple/complex), <strong>punctuation</strong> (!!!/.), and <strong>purpose</strong> (inform/instruct/chat).
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="showTab('news', document.querySelectorAll('.tab')[1])">✅ I'm ready — Start practising! →</button>
+
+</div>
+
+<!-- ========== SECTION 2: NEWSPAPER REPORT ========== -->
+<div class="section" id="sec-news">
 
   <div class="card">
     <span class="badge badge-blue">📰 Newspaper Report</span>
@@ -101,17 +354,12 @@ textarea:focus{outline:none;border-color:var(--primary)}
     <p>A newspaper report has: <strong>headline</strong>, <strong>subheading</strong>, <strong>byline</strong>, <strong>facts</strong>, <strong>quotations</strong>, and <strong>photos with captions</strong>.</p>
   </div>
 
-  <!-- Article switcher -->
   <div class="art-switcher">
-    <button class="art-btn active" id="btn-art1" onclick="switchArticle(1)">
-      Article 1 <span class="art-badge real-badge">📚 From class</span>
-    </button>
-    <button class="art-btn" id="btn-art2" onclick="switchArticle(2)">
-      Article 2 <span class="art-badge rand-badge">🎲 Random</span>
-    </button>
+    <button class="art-btn active" id="btn-art1" onclick="switchArticle(1)">Article 1 <span class="art-badge real-badge">📚 From class</span></button>
+    <button class="art-btn" id="btn-art2" onclick="switchArticle(2)">Article 2 <span class="art-badge rand-badge">🎲 Random</span></button>
   </div>
 
-  <!-- ARTICLE 1: RUBBER (real from class) -->
+  <!-- ARTICLE 1: RUBBER -->
   <div id="article1">
     <div class="newspaper">
       <div class="hl">Rubber Connects People Around the World</div>
@@ -135,7 +383,7 @@ textarea:focus{outline:none;border-color:var(--primary)}
     </div>
   </div>
 
-  <!-- ARTICLE 2: RANDOM (generated at load) -->
+  <!-- ARTICLE 2: RANDOM -->
   <div id="article2" style="display:none">
     <div class="newspaper" id="random-article-html"></div>
   </div>
@@ -151,7 +399,7 @@ textarea:focus{outline:none;border-color:var(--primary)}
   </div>
 </div>
 
-<!-- ========== SECTION 2: OVERUSED WORDS ========== -->
+<!-- ========== SECTION 3: OVERUSED WORDS ========== -->
 <div class="section" id="sec-words">
   <div class="card">
     <span class="badge badge-amber">✏️ Overused Words</span>
@@ -167,29 +415,29 @@ textarea:focus{outline:none;border-color:var(--primary)}
       <span class="score-val" id="words-score">0 / 6</span>
     </div>
   </div>
+
+  <!-- REWRITE PARAGRAPH -->
   <div class="card" style="margin-top:6px">
     <h2>📝 Rewrite the paragraph</h2>
-    <p style="margin-bottom:10px">The text below has many overused words (in <span style="color:#c92a2a;font-weight:700">red</span>). Rewrite it using better vocabulary!</p>
+    <p style="margin-bottom:10px">The text below has many overused words (in <span style="color:#c92a2a;font-weight:700">red</span>). Rewrite it using better vocabulary, then check your answer!</p>
     <div class="newspaper" style="margin-bottom:10px">
       Yesterday was a <span style="color:#c92a2a;font-weight:700">good</span> day. We visited a <span style="color:#c92a2a;font-weight:700">big</span> museum. It was very <span style="color:#c92a2a;font-weight:700">interesting</span> and the guide was <span style="color:#c92a2a;font-weight:700">nice</span>. I felt <span style="color:#c92a2a;font-weight:700">happy</span> because it was a <span style="color:#c92a2a;font-weight:700">fun</span> trip.
     </div>
     <textarea id="rewrite-ans" placeholder="Write your improved paragraph here..."></textarea>
-    <div class="nav-row" style="margin-top:10px">
-      <button class="primary" onclick="checkRewrite()">🤖 Check with Claude</button>
-    </div>
-    <div class="ai-box" id="rewrite-fb">
-      <div class="ai-label">✨ Claude's feedback</div>
-      <div id="rewrite-fb-text">...</div>
+    <button class="check-btn" onclick="checkRewrite()">✅ Check my answer</button>
+    <div class="fb-box" id="rewrite-fb">
+      <div class="fb-label">📋 Feedback</div>
+      <div id="rewrite-fb-text"></div>
     </div>
   </div>
 </div>
 
-<!-- ========== SECTION 3: AUDIENCE ========== -->
+<!-- ========== SECTION 4: AUDIENCE ========== -->
 <div class="section" id="sec-audience">
   <div class="card">
     <span class="badge badge-teal">👥 Who Am I Writing To?</span>
     <h2>Know your audience!</h2>
-    <p>Different readers need different language. Match each message to the right audience: <strong>Friend, Teacher, Parents, Younger Children, General Public</strong>.</p>
+    <p>Different readers need different language. Match each message to the right audience.</p>
   </div>
   <div id="aud-qs"></div>
   <div class="score-wrap">
@@ -199,117 +447,119 @@ textarea:focus{outline:none;border-color:var(--primary)}
       <span class="score-val" id="aud-score">0 / 5</span>
     </div>
   </div>
+
+  <!-- WRITING CHALLENGE -->
   <div class="card" style="margin-top:6px">
     <h2>✍️ Writing challenge</h2>
     <p style="margin-bottom:10px">Choose an audience and write a short message about this situation:</p>
     <div class="newspaper" style="margin-bottom:12px;font-style:italic">⚠️ "You forgot your PE kit at school today."</div>
     <div class="aud-chips" id="writing-chips">
-      <button class="aud-chip" onclick="pickAud(this,'Friend')">Friend</button>
-      <button class="aud-chip" onclick="pickAud(this,'Teacher')">Teacher</button>
-      <button class="aud-chip" onclick="pickAud(this,'Parent')">Parent</button>
-      <button class="aud-chip" onclick="pickAud(this,'Younger children')">Younger children</button>
+      <button class="aud-chip" onclick="pickAud(this,'Friend')">👫 Friend</button>
+      <button class="aud-chip" onclick="pickAud(this,'Teacher')">👩‍🏫 Teacher</button>
+      <button class="aud-chip" onclick="pickAud(this,'Parent')">👨‍👩‍👧 Parent</button>
+      <button class="aud-chip" onclick="pickAud(this,'Younger children')">🧒 Younger children</button>
     </div>
     <textarea id="aud-writing" placeholder="Write your message here..."></textarea>
-    <div class="nav-row" style="margin-top:10px">
-      <button class="primary" onclick="checkAudWriting()">🤖 Check with Claude</button>
-    </div>
-    <div class="ai-box" id="aud-fb">
-      <div class="ai-label">✨ Claude's feedback</div>
-      <div id="aud-fb-text">...</div>
+    <button class="check-btn" onclick="checkAudWriting()">✅ Check my answer</button>
+    <div class="fb-box" id="aud-fb">
+      <div class="fb-label">📋 Feedback</div>
+      <div id="aud-fb-text"></div>
     </div>
   </div>
 </div>
 
 <script>
-// ── RANDOM ARTICLES POOL ───────────────────────────────────────────────────────
+// ── INTRO TOGGLE ──────────────────────────────────────────────────────────────
+function toggleIntro(id) {
+  const body = document.getElementById('body-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
+
+// ── RANDOM ARTICLES ───────────────────────────────────────────────────────────
 const randomArticles = [
   {
-    hl: "Giant Pumpkin Breaks County Record!",
-    sub: "Local farmer grows pumpkin weighing over 200 kilograms",
-    byl: "By Lucy Hartman | Tuesday, 10 June 2026 | THE COUNTRYSIDE GAZETTE",
-    body: `<p>A farmer from the village of Elmsworth has broken the county record after growing a pumpkin that weighs a remarkable 204 kilograms. Tom Briggs, 52, spent six months carefully watering and feeding the giant vegetable in his back garden.</p>
+    hl:"Giant Pumpkin Breaks County Record!",
+    sub:"Local farmer grows pumpkin weighing over 200 kilograms",
+    byl:"By Lucy Hartman | Tuesday, 10 June 2026 | THE COUNTRYSIDE GAZETTE",
+    body:`<p>A farmer from the village of Elmsworth has broken the county record after growing a pumpkin that weighs a remarkable 204 kilograms. Tom Briggs, 52, spent six months carefully watering and feeding the giant vegetable in his back garden.</p>
     <p style="margin-top:8px">The pumpkin, nicknamed "Big Orange", measures over one metre in height and nearly two metres around. Scientists say the warm summer weather helped it grow so fast.</p>
     <div class="qt">"I couldn't believe my eyes when I put it on the scale. I've been growing pumpkins for twenty years, but nothing like this!" said Mr Briggs.</div>
     <p>Visitors from neighbouring towns have come to see the record-breaking vegetable. Local officials plan to display it at the county fair next month.</p>`,
-    qs: [
-      { q:"What is the HEADLINE of this article?", opts:["Giant Pumpkin Breaks County Record!","Local farmer grows pumpkin weighing over 200 kilograms","By Lucy Hartman | Tuesday, 10 June 2026","THE COUNTRYSIDE GAZETTE"], ans:0, fb:"✅ The HEADLINE is the big bold title at the top — it must be catchy and grab the reader's attention!" },
-      { q:"What is the SUBHEADING?", opts:["Giant Pumpkin Breaks County Record!","Local farmer grows pumpkin weighing over 200 kilograms","By Lucy Hartman | Tuesday, 10 June 2026","Tom Briggs, 52, spent six months watering the vegetable."], ans:1, fb:"✅ The SUBHEADING gives extra detail about the story. It sits just below the headline." },
-      { q:"Who is QUOTED in the article?", opts:["Lucy Hartman","Local officials","A scientist","Tom Briggs, the farmer"], ans:3, fb:"✅ Tom Briggs is quoted! Quotations give the reader a real person's voice and make the report more engaging." },
-      { q:"Which is a FACT in this article?", opts:["It was the most beautiful pumpkin ever.","The pumpkin weighs 204 kilograms.","Everyone in England wanted to see it.","Mr Briggs is the best farmer in the world."], ans:1, fb:"✅ Facts can be checked! '204 kilograms' is a verifiable fact. The others are opinions." },
-      { q:"Which feature FIRST grabs the reader's attention?", opts:["The byline","The quotation","The headline","The fact box"], ans:2, fb:"✅ The HEADLINE is always first — it acts like a magnet to pull the reader in!" }
+    qs:[
+      {q:"What is the HEADLINE?",opts:["Giant Pumpkin Breaks County Record!","Local farmer grows pumpkin weighing over 200 kilograms","By Lucy Hartman | Tuesday, 10 June 2026","THE COUNTRYSIDE GAZETTE"],ans:0,fb:"✅ The HEADLINE is the big bold title — it must be catchy and grab attention immediately!"},
+      {q:"What is the SUBHEADING?",opts:["Giant Pumpkin Breaks County Record!","Local farmer grows pumpkin weighing over 200 kilograms","By Lucy Hartman | Tuesday, 10 June 2026","Tom Briggs spent six months watering the vegetable."],ans:1,fb:"✅ The SUBHEADING adds more detail to the headline. It sits right below it."},
+      {q:"Who is QUOTED in the article?",opts:["Lucy Hartman","Local officials","A scientist","Tom Briggs, the farmer"],ans:3,fb:"✅ Tom Briggs is quoted! Quotations give the reader a real person's voice and make the report more engaging."},
+      {q:"Which is a FACT?",opts:["It was the most beautiful pumpkin ever.","The pumpkin weighs 204 kilograms.","Everyone in England wanted to see it.","Mr Briggs is the best farmer in the world."],ans:1,fb:"✅ '204 kilograms' is a verifiable fact. The others are opinions."},
+      {q:"Which feature FIRST grabs the reader's attention?",opts:["The byline","The quotation","The headline","The fact box"],ans:2,fb:"✅ The HEADLINE is always first — it acts like a magnet to pull the reader in!"}
     ]
   },
   {
-    hl: "Young Inventor Creates Solar-Powered Schoolbag!",
-    sub: "Ten-year-old's clever design could help millions of children who lack electricity",
-    byl: "By James Okonkwo | Wednesday, 18 June 2026 | YOUNG INNOVATORS DAILY",
-    body: `<p>A ten-year-old student from Lagos, Nigeria, has invented a schoolbag with solar panels on the outside that can charge a small lamp for reading at night. Amara Nwosu built her first prototype using recycled materials from her local community.</p>
-    <p style="margin-top:8px">The bag collects sunlight during the school day and stores enough energy to power a reading lamp for up to four hours each evening. Amara designed it after noticing that many of her classmates struggled to do homework after dark.</p>
+    hl:"Young Inventor Creates Solar-Powered Schoolbag!",
+    sub:"Ten-year-old's clever design could help millions of children who lack electricity",
+    byl:"By James Okonkwo | Wednesday, 18 June 2026 | YOUNG INNOVATORS DAILY",
+    body:`<p>A ten-year-old student from Lagos, Nigeria, has invented a schoolbag with solar panels on the outside that can charge a small lamp for reading at night. Amara Nwosu built her first prototype using recycled materials from her local community.</p>
+    <p style="margin-top:8px">The bag collects sunlight during the school day and stores enough energy to power a reading lamp for up to four hours each evening.</p>
     <div class="qt">"I wanted to help children who, like me, don't always have electricity at home. Every child deserves the chance to read and learn," said Amara.</div>
-    <p>Her invention won first prize at a national science competition last month. A technology company has offered to help produce the bag on a larger scale so more children can benefit.</p>`,
-    qs: [
-      { q:"What is the HEADLINE of this article?", opts:["Ten-year-old's clever design could help millions","Young Inventor Creates Solar-Powered Schoolbag!","By James Okonkwo | Wednesday, 18 June 2026","YOUNG INNOVATORS DAILY"], ans:1, fb:"✅ The HEADLINE is the bold title at the top — it uses a powerful idea to hook the reader!" },
-      { q:"What is the SUBHEADING?", opts:["Young Inventor Creates Solar-Powered Schoolbag!","Ten-year-old's clever design could help millions of children who lack electricity","By James Okonkwo | Wednesday, 18 June 2026","Amara Nwosu built her prototype using recycled materials."], ans:1, fb:"✅ The SUBHEADING adds more detail to the headline. It sits right below it." },
-      { q:"Who is QUOTED in the article?", opts:["James Okonkwo","A technology company director","Amara Nwosu, the young inventor","A classmate"], ans:2, fb:"✅ Amara is quoted! Her own words make the report more personal and engaging for the reader." },
-      { q:"Which is a FACT in this report?", opts:["It was the most amazing invention ever.","Amara is the cleverest child in Nigeria.","The bag can power a lamp for up to four hours.","Everyone loved her idea immediately."], ans:2, fb:"✅ 'Up to four hours' is a verifiable fact. The others are opinions that can't be checked." },
-      { q:"What does the BYLINE tell you?", opts:["The main topic of the article","Who wrote the article, when, and which newspaper","The most important fact","The opinion of the writer"], ans:1, fb:"✅ The BYLINE tells you the reporter's name, the date, and the newspaper — it comes just below the headline and subheading." }
+    <p>Her invention won first prize at a national science competition last month. A technology company has offered to help produce the bag on a larger scale.</p>`,
+    qs:[
+      {q:"What is the HEADLINE?",opts:["Ten-year-old's clever design could help millions","Young Inventor Creates Solar-Powered Schoolbag!","By James Okonkwo | Wednesday, 18 June 2026","YOUNG INNOVATORS DAILY"],ans:1,fb:"✅ The HEADLINE is the bold title at the top — it uses a powerful idea to hook the reader!"},
+      {q:"What is the SUBHEADING?",opts:["Young Inventor Creates Solar-Powered Schoolbag!","Ten-year-old's clever design could help millions of children who lack electricity","By James Okonkwo | Wednesday, 18 June 2026","Amara built her prototype using recycled materials."],ans:1,fb:"✅ The SUBHEADING adds more detail below the headline."},
+      {q:"Who is QUOTED?",opts:["James Okonkwo","A technology company director","Amara Nwosu, the young inventor","A classmate"],ans:2,fb:"✅ Amara is quoted! Her own words make the report more personal and engaging."},
+      {q:"Which is a FACT?",opts:["It was the most amazing invention ever.","Amara is the cleverest child in Nigeria.","The bag can power a lamp for up to four hours.","Everyone loved her idea immediately."],ans:2,fb:"✅ 'Up to four hours' is a verifiable fact. The others are opinions."},
+      {q:"What does the BYLINE tell you?",opts:["The main topic","Who wrote it, when, and which newspaper","The most important fact","The writer's opinion"],ans:1,fb:"✅ The BYLINE tells you the reporter's name, the date, and the newspaper!"}
     ]
   },
   {
-    hl: "Mystery Lights Spotted Over City Park!",
-    sub: "Hundreds of residents report seeing strange glowing objects in the night sky",
-    byl: "By Sofia Reyes | Friday, 20 June 2026 | THE EVENING HERALD",
-    body: `<p>Hundreds of people in the city of Brampton reported seeing mysterious glowing lights floating above Central Park late on Thursday night. The lights, described as bright orange circles, moved slowly across the sky before disappearing without a sound.</p>
-    <p style="margin-top:8px">Local police received over 300 calls within an hour. Experts from the city's astronomy club say the lights were most likely lanterns released from a nearby private event, though no official explanation has been confirmed.</p>
+    hl:"Mystery Lights Spotted Over City Park!",
+    sub:"Hundreds of residents report seeing strange glowing objects in the night sky",
+    byl:"By Sofia Reyes | Friday, 20 June 2026 | THE EVENING HERALD",
+    body:`<p>Hundreds of people in the city of Brampton reported seeing mysterious glowing lights floating above Central Park late on Thursday night. The lights, described as bright orange circles, moved slowly across the sky before disappearing without a sound.</p>
+    <p style="margin-top:8px">Local police received over 300 calls within an hour. Experts from the city's astronomy club say the lights were most likely lanterns released from a nearby private event.</p>
     <div class="qt">"I have never seen anything like it in my life. They moved too slowly to be aeroplanes and were completely silent," said eyewitness Maria Fontaine.</div>
     <p>Videos shared on social media showed the lights drifting north before vanishing. The city council has asked residents to remain calm while investigations continue.</p>`,
-    qs: [
-      { q:"What is the HEADLINE of this article?", opts:["Hundreds of residents report seeing strange glowing objects","Mystery Lights Spotted Over City Park!","By Sofia Reyes | Friday, 20 June 2026","THE EVENING HERALD"], ans:1, fb:"✅ The HEADLINE must be catchy and make the reader want to know more — this one uses mystery to hook them!" },
-      { q:"What is the SUBHEADING?", opts:["Mystery Lights Spotted Over City Park!","Hundreds of residents report seeing strange glowing objects in the night sky","By Sofia Reyes | Friday, 20 June 2026","Local police received over 300 calls."], ans:1, fb:"✅ The SUBHEADING gives extra information below the headline." },
-      { q:"Who is QUOTED in this article?", opts:["Sofia Reyes","The city council","Maria Fontaine, an eyewitness","An astronomy expert"], ans:2, fb:"✅ Maria Fontaine is quoted as an eyewitness — real quotes make newspaper reports more believable and engaging!" },
-      { q:"Which sentence is a FACT (not an opinion)?", opts:["It was the most frightening night in the city's history.","The lights were definitely from another planet.","Local police received over 300 calls within an hour.","The lights looked absolutely beautiful."], ans:2, fb:"✅ '300 calls within an hour' is a verifiable fact. The other sentences are opinions." },
-      { q:"Which feature helps the reader know WHO wrote the article?", opts:["The headline","The subheading","The byline","The quotation"], ans:2, fb:"✅ The BYLINE tells you the reporter's name. It comes right after the headline and subheading." }
+    qs:[
+      {q:"What is the HEADLINE?",opts:["Hundreds of residents report seeing strange glowing objects","Mystery Lights Spotted Over City Park!","By Sofia Reyes | Friday, 20 June 2026","THE EVENING HERALD"],ans:1,fb:"✅ The HEADLINE uses mystery to hook the reader — a great technique!"},
+      {q:"What is the SUBHEADING?",opts:["Mystery Lights Spotted Over City Park!","Hundreds of residents report seeing strange glowing objects in the night sky","By Sofia Reyes | Friday, 20 June 2026","Local police received over 300 calls."],ans:1,fb:"✅ The SUBHEADING gives extra information below the headline."},
+      {q:"Who is QUOTED?",opts:["Sofia Reyes","The city council","Maria Fontaine, an eyewitness","An astronomy expert"],ans:2,fb:"✅ Maria Fontaine is quoted as an eyewitness — real quotes make newspaper reports more believable!"},
+      {q:"Which is a FACT?",opts:["It was the most frightening night ever.","The lights were from another planet.","Local police received over 300 calls within an hour.","The lights looked absolutely beautiful."],ans:2,fb:"✅ '300 calls within an hour' is a verifiable fact. The others are opinions."},
+      {q:"Which feature tells you WHO wrote the article?",opts:["The headline","The subheading","The byline","The quotation"],ans:2,fb:"✅ The BYLINE tells you the reporter's name — it comes just after the headline and subheading."}
     ]
   },
   {
-    hl: "School Garden Feeds Entire Neighbourhood!",
-    sub: "Students at Riverside Primary grow enough vegetables to share with 50 local families",
-    byl: "By Priya Sharma | Monday, 16 June 2026 | THE COMMUNITY TIMES",
-    body: `<p>Students at Riverside Primary School have transformed an unused car park into a thriving vegetable garden that now produces enough food to share with 50 families in the surrounding neighbourhood. The project, called "Growing Together", began eighteen months ago with just twelve students and a handful of seeds.</p>
-    <p style="margin-top:8px">The garden now covers 300 square metres and grows tomatoes, courgettes, carrots, lettuce, and herbs. Every Friday, students harvest the vegetables and pack them into bags for local families who sign up online.</p>
+    hl:"School Garden Feeds Entire Neighbourhood!",
+    sub:"Students at Riverside Primary grow enough vegetables to share with 50 local families",
+    byl:"By Priya Sharma | Monday, 16 June 2026 | THE COMMUNITY TIMES",
+    body:`<p>Students at Riverside Primary School have transformed an unused car park into a thriving vegetable garden that now produces enough food to share with 50 families in the surrounding neighbourhood.</p>
+    <p style="margin-top:8px">The garden covers 300 square metres and grows tomatoes, courgettes, carrots, lettuce, and herbs. Every Friday, students harvest the vegetables and pack them into bags for local families.</p>
     <div class="qt">"This project has taught our children not just about science, but about kindness and community. I am incredibly proud of every single one of them," said headteacher Mrs Patel.</div>
     <p>The school has won a regional award for environmental education. Local businesses have donated tools and compost to help expand the garden next year.</p>`,
-    qs: [
-      { q:"What is the HEADLINE of this article?", opts:["Students at Riverside Primary grow vegetables for families","School Garden Feeds Entire Neighbourhood!","By Priya Sharma | Monday, 16 June 2026","THE COMMUNITY TIMES"], ans:1, fb:"✅ The HEADLINE is short, catchy and tells the main idea instantly!" },
-      { q:"What is the SUBHEADING?", opts:["School Garden Feeds Entire Neighbourhood!","Students at Riverside Primary grow enough vegetables to share with 50 local families","By Priya Sharma | Monday, 16 June 2026","The project is called 'Growing Together'."], ans:1, fb:"✅ The SUBHEADING gives more detail about the headline story." },
-      { q:"Who is QUOTED in this article?", opts:["Priya Sharma","A local family","Mrs Patel, the headteacher","A Year 4 student"], ans:2, fb:"✅ Mrs Patel is quoted — quoting someone with authority (like a headteacher) adds credibility to the report!" },
-      { q:"Which is a FACT in this report?", opts:["It is the best garden in the country.","The garden covers 300 square metres.","Every family in the city loves the vegetables.","The students are the kindest in the world."], ans:1, fb:"✅ '300 square metres' is a fact you can measure and verify. The others are opinions." },
-      { q:"Which feature of a newspaper MOST makes the reader curious to read the whole article?", opts:["The byline","The caption under a photo","The headline","The sources list"], ans:2, fb:"✅ The HEADLINE is the first and most important hook — it must make the reader want to find out more!" }
+    qs:[
+      {q:"What is the HEADLINE?",opts:["Students at Riverside Primary grow vegetables for families","School Garden Feeds Entire Neighbourhood!","By Priya Sharma | Monday, 16 June 2026","THE COMMUNITY TIMES"],ans:1,fb:"✅ The HEADLINE is short, catchy and tells the main idea instantly!"},
+      {q:"What is the SUBHEADING?",opts:["School Garden Feeds Entire Neighbourhood!","Students at Riverside Primary grow enough vegetables to share with 50 local families","By Priya Sharma | Monday, 16 June 2026","The project is called 'Growing Together'."],ans:1,fb:"✅ The SUBHEADING gives more detail about the headline story."},
+      {q:"Who is QUOTED?",opts:["Priya Sharma","A local family","Mrs Patel, the headteacher","A Year 4 student"],ans:2,fb:"✅ Mrs Patel is quoted — quoting someone with authority adds credibility to the report!"},
+      {q:"Which is a FACT?",opts:["It is the best garden in the country.","The garden covers 300 square metres.","Every family in the city loves the vegetables.","The students are the kindest in the world."],ans:1,fb:"✅ '300 square metres' is a fact you can measure and verify. The others are opinions."},
+      {q:"Which feature MOST makes the reader want to read the whole article?",opts:["The byline","The photo caption","The headline","The sources list"],ans:2,fb:"✅ The HEADLINE is the first and most important hook — it must make the reader want to find out more!"}
     ]
   }
 ];
 
-// Pick a random article on load (stays fixed for the session)
 const randIdx = Math.floor(Math.random() * randomArticles.length);
 const randArt = randomArticles[randIdx];
-
-// Inject random article HTML
 document.getElementById('random-article-html').innerHTML =
-  `<div class="hl">${randArt.hl}</div>
-   <div class="sub">${randArt.sub}</div>
-   <div class="byl">${randArt.byl}</div>
-   ${randArt.body}`;
+  `<div class="hl">${randArt.hl}</div><div class="sub">${randArt.sub}</div><div class="byl">${randArt.byl}</div>${randArt.body}`;
 
 // ── ARTICLE SWITCH ────────────────────────────────────────────────────────────
 let currentArticle = 1;
 
-// Questions per article
 const art1Qs = [
-  { q:"What is the HEADLINE of the Rubber article?", opts:["Rubber Connects People Around the World","This useful material helps make tyres, shoes, gloves and many everyday products","By Daniel Cruz, Junior Reporter","MATERIAL WORLD NEWS"], ans:0, fb:"✅ The HEADLINE is the big bold title at the very top of a newspaper report!" },
-  { q:"What is the SUBHEADING of the Rubber article?", opts:["Rubber Connects People Around the World","This useful material helps make tyres, shoes, gloves and many everyday products","By Daniel Cruz, Junior Reporter | 20 June 2026","A single rubber tree produces latex for 25 to 30 years."], ans:1, fb:"✅ The SUBHEADING adds extra information right below the headline." },
-  { q:"Who is QUOTED in the Rubber article?", opts:["Daniel Cruz","A rubber tree farmer","Materials scientist Dr Patel","A government official"], ans:2, fb:"✅ Dr Patel is quoted! Quotations make a newspaper report more engaging and trustworthy." },
-  { q:"Which of these is a FACT from the Rubber article?", opts:["Rubber is the most important material in the world.","Natural rubber comes from the latex of rubber trees.","Everyone should use rubber products every day.","Rubber trees are the most beautiful trees."], ans:1, fb:"✅ 'Natural rubber comes from the latex of rubber trees' is a verifiable fact — it can be checked!" },
-  { q:"What does the FACT BOX in the Rubber article help the reader do?", opts:["Read the article more slowly","Find extra quick information at a glance","Understand the reporter's opinion","Identify the headline"], ans:1, fb:"✅ A FACT BOX gives the reader important facts quickly without reading the whole article — it engages the reader!" }
+  {q:"What is the HEADLINE of the Rubber article?",opts:["Rubber Connects People Around the World","This useful material helps make tyres, shoes, gloves and many everyday products","By Daniel Cruz, Junior Reporter","MATERIAL WORLD NEWS"],ans:0,fb:"✅ The HEADLINE is the big bold title at the very top of a newspaper report!"},
+  {q:"What is the SUBHEADING of the Rubber article?",opts:["Rubber Connects People Around the World","This useful material helps make tyres, shoes, gloves and many everyday products","By Daniel Cruz, Junior Reporter | 20 June 2026","A single rubber tree produces latex for 25 to 30 years."],ans:1,fb:"✅ The SUBHEADING adds extra information right below the headline."},
+  {q:"Who is QUOTED in the Rubber article?",opts:["Daniel Cruz","A rubber tree farmer","Materials scientist Dr Patel","A government official"],ans:2,fb:"✅ Dr Patel is quoted! Quotations make a newspaper report more engaging and trustworthy."},
+  {q:"Which of these is a FACT from the Rubber article?",opts:["Rubber is the most important material in the world.","Natural rubber comes from the latex of rubber trees.","Everyone should use rubber products every day.","Rubber trees are the most beautiful trees."],ans:1,fb:"✅ 'Natural rubber comes from the latex of rubber trees' is a verifiable fact — it can be checked!"},
+  {q:"What does the FACT BOX help the reader do?",opts:["Read the article more slowly","Find extra quick information at a glance","Understand the reporter's opinion","Identify the headline"],ans:1,fb:"✅ A FACT BOX gives the reader important facts quickly without reading the whole article!"}
 ];
 
 function switchArticle(n) {
@@ -318,37 +568,34 @@ function switchArticle(n) {
   document.getElementById('article2').style.display = n===2 ? 'block' : 'none';
   document.getElementById('btn-art1').classList.toggle('active', n===1);
   document.getElementById('btn-art2').classList.toggle('active', n===2);
-  // Reset state for this article
-  newsState = { cur:0, score:0, done:[] };
+  newsState = {cur:0, score:0, done:[]};
   renderNewsQ();
 }
 
-// ── QUESTION DATA ─────────────────────────────────────────────────────────────
-function getCurrentNewsQs() {
-  return currentArticle === 1 ? art1Qs : randArt.qs;
-}
+function getCurrentNewsQs() { return currentArticle===1 ? art1Qs : randArt.qs; }
 
+// ── QUESTION DATA ─────────────────────────────────────────────────────────────
 const wordsQs = [
-  { sentence:'The castle was ___.', overused:'big', opts:['enormous','very big','large big','much'], ans:0, fb:"'Enormous' is much more precise and powerful than 'big'!" },
-  { sentence:'Sara felt ___ when she won the prize.', overused:'happy', opts:['very happy','nice','delighted','okay'], ans:2, fb:"'Delighted' is a stronger, more precise word that shows exactly how Sara felt!" },
-  { sentence:'The film was ___ from beginning to end.', overused:'interesting', opts:['good','captivating','very interesting','nice'], ans:1, fb:"'Captivating' means so interesting you can't look away — much better than 'interesting'!" },
-  { sentence:'The guide was ___ to all the visitors.', overused:'nice', opts:['welcoming','very nice','big','happy'], ans:0, fb:"'Welcoming' paints a much clearer picture than 'nice'. It tells us exactly how the guide behaved!" },
-  { sentence:"The trip was ___ — we didn't want to go home.", overused:'good', opts:['okay','fine','excellent','very good'], ans:2, fb:"'Excellent' is a much stronger word. It tells the reader the trip was truly special!" },
-  { sentence:'The puppy ___ at every person who walked past.', overused:'looked', opts:['stared','seen','looked nicely','very looked'], ans:0, fb:"'Stared' gives a much more vivid image — we can picture exactly what the puppy was doing!" }
+  {sentence:'The castle was ___.', overused:'big', opts:['enormous','very big','large big','much'], ans:0, fb:"'Enormous' is much more precise and powerful than 'big'!"},
+  {sentence:'Sara felt ___ when she won the prize.', overused:'happy', opts:['very happy','nice','delighted','okay'], ans:2, fb:"'Delighted' is a stronger, more precise word that shows exactly how Sara felt!"},
+  {sentence:'The film was ___ from beginning to end.', overused:'interesting', opts:['good','captivating','very interesting','nice'], ans:1, fb:"'Captivating' means so interesting you can't look away — much better than 'interesting'!"},
+  {sentence:'The guide was ___ to all the visitors.', overused:'nice', opts:['welcoming','very nice','big','happy'], ans:0, fb:"'Welcoming' paints a much clearer picture than 'nice'. It tells us exactly how the guide behaved!"},
+  {sentence:"The trip was ___ — we didn't want to go home.", overused:'good', opts:['okay','fine','excellent','very good'], ans:2, fb:"'Excellent' is a much stronger word. It tells the reader the trip was truly special!"},
+  {sentence:'The puppy ___ at every person who walked past.', overused:'looked', opts:['stared','seen','looked nicely','very looked'], ans:0, fb:"'Stared' gives a much more vivid image — we can picture exactly what the puppy was doing!"}
 ];
 
 const audQs = [
-  { situation:"You forgot your library book.", msg:'"OMG I totally forgot the library book again! Can you cover for me?? 😅"', opts:["Friend","Teacher","Parent","General Public"], ans:0, fb:"✅ Informal language, exclamation marks, emoji, and casual phrasing = writing to a Friend!" },
-  { situation:"The classroom is too noisy.", msg:'"Dear Mrs. Smith, I would like to let you know that the noise level in the classroom is making it difficult to concentrate. Could we perhaps discuss a solution? Thank you."', opts:["Friend","Teacher","Parent","Younger Children"], ans:1, fb:"✅ Polite language, formal greeting, complete sentences, and respectful tone = writing to a Teacher!" },
-  { situation:"There is a school trip next week.", msg:'"Please sign and return the permission slip by Friday. Our field trip departs at 8:30 a.m. We look forward to seeing you at the school gate."', opts:["Friend","Teacher","Parents","General Public"], ans:2, fb:"✅ Dates, event details, request for action, and clear organised language = writing to Parents!" },
-  { situation:"Students are running in the corridor.", msg:'"Walk slowly and carefully! Keep your hands by your sides. Be safe and kind to everyone around you."', opts:["General Public","Teacher","Parents","Younger Children"], ans:3, fb:"✅ Simple vocabulary, short sentences, direct instructions, and positive reminders = writing for Younger Children!" },
-  { situation:"The library will be closed on Monday.", msg:'"The school library will be closed on Monday 28 June for essential maintenance. It will reopen on Tuesday 29 June. We apologise for any inconvenience."', opts:["Friend","Teacher","Parents","General Public"], ans:3, fb:"✅ No personal language, facts, clear and concise = writing for the General Public!" }
+  {situation:"You forgot your library book.", msg:'"OMG I totally forgot the library book again! Can you cover for me?? 😅"', opts:["Friend","Teacher","Parent","General Public"], ans:0, fb:"✅ Informal language, exclamation marks, emoji, and casual phrasing = writing to a Friend!"},
+  {situation:"The classroom is too noisy.", msg:'"Dear Mrs. Smith, I would like to let you know that the noise level in the classroom is making it difficult to concentrate. Could we perhaps discuss a solution? Thank you."', opts:["Friend","Teacher","Parent","Younger Children"], ans:1, fb:"✅ Polite language, formal greeting, complete sentences, and respectful tone = writing to a Teacher!"},
+  {situation:"There is a school trip next week.", msg:'"Please sign and return the permission slip by Friday. Our field trip departs at 8:30 a.m. We look forward to seeing you at the school gate."', opts:["Friend","Teacher","Parents","General Public"], ans:2, fb:"✅ Dates, event details, request for action, and clear organised language = writing to Parents!"},
+  {situation:"Students are running in the corridor.", msg:'"Walk slowly and carefully! Keep your hands by your sides. Be safe and kind to everyone around you."', opts:["General Public","Teacher","Parents","Younger Children"], ans:3, fb:"✅ Simple vocabulary, short sentences, direct instructions, and positive reminders = writing for Younger Children!"},
+  {situation:"The library will be closed on Monday.", msg:'"The school library will be closed on Monday 28 June for essential maintenance. It will reopen on Tuesday 29 June. We apologise for any inconvenience."', opts:["Friend","Teacher","Parents","General Public"], ans:3, fb:"✅ No personal language, facts, clear and concise = writing for the General Public!"}
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let newsState = { cur:0, score:0, done:[] };
-let wordsState = { score:0, done:[] };
-let audState   = { cur:0, score:0, done:[] };
+let newsState = {cur:0, score:0, done:[]};
+let wordsState = {score:0, done:[]};
+let audState   = {cur:0, score:0, done:[]};
 let selectedAud = "";
 
 // ── TABS ──────────────────────────────────────────────────────────────────────
@@ -356,7 +603,7 @@ function showTab(id, el) {
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sec-'+id).classList.add('active');
-  el.classList.add('active');
+  if(el) el.classList.add('active');
 }
 
 // ── NEWSPAPER ─────────────────────────────────────────────────────────────────
@@ -365,8 +612,7 @@ function renderNewsQ() {
   const c = document.getElementById('news-qs');
   const q = qs[newsState.cur];
   const done = newsState.done[newsState.cur];
-  let html = `<div class="q-block">
-    <div class="q-num">Question ${newsState.cur+1} of ${qs.length}</div>
+  let html = `<div class="q-block"><div class="q-num">Question ${newsState.cur+1} of ${qs.length}</div>
     <div class="q-text">${q.q}</div><div class="opts">`;
   q.opts.forEach((o,i)=>{
     let cls='opt-btn';
@@ -403,8 +649,7 @@ function newsNav(d){
 
 // ── OVERUSED WORDS ────────────────────────────────────────────────────────────
 function renderWordsQ(){
-  const c=document.getElementById('words-qs');
-  c.innerHTML='';
+  const c=document.getElementById('words-qs');c.innerHTML='';
   wordsQs.forEach((q,qi)=>{
     const done=wordsState.done[qi];
     let html=`<div class="q-block"><div class="q-num">Question ${qi+1} of ${wordsQs.length}</div>
@@ -417,12 +662,8 @@ function renderWordsQ(){
       html+=`<button class="${cls}" onclick="answerWord(${qi},${i})" ${done!==undefined?'disabled':''}>${o}</button>`;
     });
     html+='</div>';
-    if(done!==undefined){
-      const ok=done===q.ans;
-      html+=`<div class="feedback ${ok?'ok':'nope'}" style="margin-top:8px">${ok?'✅ ':'❌ '}${q.fb}</div>`;
-    }
-    html+='</div>';
-    c.innerHTML+=html;
+    if(done!==undefined){const ok=done===q.ans;html+=`<div class="feedback ${ok?'ok':'nope'}" style="margin-top:8px">${ok?'✅ ':'❌ '}${q.fb}</div>`;}
+    html+='</div>';c.innerHTML+=html;
   });
 }
 
@@ -437,8 +678,7 @@ function answerWord(qi,i){
 // ── AUDIENCE ─────────────────────────────────────────────────────────────────
 function renderAudQ(){
   const c=document.getElementById('aud-qs');
-  const q=audQs[audState.cur];
-  const done=audState.done[audState.cur];
+  const q=audQs[audState.cur];const done=audState.done[audState.cur];
   let html=`<div class="q-block"><div class="q-num">Question ${audState.cur+1} of ${audQs.length}</div>
     <div class="q-text">Situation: <em>${q.situation}</em><br><br>Who is this message written for?
       <div style="background:#f0f4ff;border:1.5px solid #c5d0fa;border-radius:8px;padding:10px 13px;font-size:.88rem;color:#444;font-style:italic;margin-top:8px">${q.msg}</div>
@@ -449,35 +689,28 @@ function renderAudQ(){
     html+=`<button class="${cls}" onclick="answerAud(${i})" ${done!==undefined?'disabled':''}>${o}</button>`;
   });
   html+='</div>';
-  if(done!==undefined){
-    const ok=done===q.ans;
-    html+=`<div class="feedback ${ok?'ok':'nope'}">${ok?q.fb:'❌ Not quite. '+q.fb}</div>`;
-  }
+  if(done!==undefined){const ok=done===q.ans;html+=`<div class="feedback ${ok?'ok':'nope'}">${ok?q.fb:'❌ Not quite. '+q.fb}</div>`;}
   html+=`</div><div class="nav-row">
     <button onclick="audNav(-1)" ${audState.cur===0?'disabled':''}>← Previous</button>
     <button class="primary" onclick="audNav(1)" ${audState.cur===audQs.length-1?'disabled':''}>Next →</button>
   </div>`;
-  c.innerHTML=html;
-  updateBar('aud',audState.score,audQs.length);
+  c.innerHTML=html;updateBar('aud',audState.score,audQs.length);
 }
 
 function answerAud(i){
   if(audState.done[audState.cur]!==undefined)return;
   audState.done[audState.cur]=i;
   if(i===audQs[audState.cur].ans)audState.score++;
-  updateBar('aud',audState.score,audQs.length);
-  renderAudQ();
+  updateBar('aud',audState.score,audQs.length);renderAudQ();
 }
 
 function audNav(d){
-  audState.cur=Math.max(0,Math.min(audQs.length-1,audState.cur+d));
-  renderAudQ();
+  audState.cur=Math.max(0,Math.min(audQs.length-1,audState.cur+d));renderAudQ();
 }
 
 function pickAud(el,aud){
   document.querySelectorAll('#writing-chips .aud-chip').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  selectedAud=aud;
+  el.classList.add('active');selectedAud=aud;
 }
 
 // ── SCORE BAR ─────────────────────────────────────────────────────────────────
@@ -486,48 +719,69 @@ function updateBar(id,score,total){
   document.getElementById(id+'-score').textContent=score+' / '+total;
 }
 
-// ── CLAUDE API ────────────────────────────────────────────────────────────────
-async function callClaude(prompt){
-  const res=await fetch("https://api.anthropic.com/v1/messages",{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]})
-  });
-  const d=await res.json();
-  return d.content[0].text;
-}
-
-async function checkRewrite(){
-  const ans=document.getElementById('rewrite-ans').value.trim();
+// ── REWRITE CHECK (offline) ───────────────────────────────────────────────────
+function checkRewrite(){
+  const ans = document.getElementById('rewrite-ans').value.trim().toLowerCase();
   if(!ans){alert("Please write your paragraph first!");return;}
-  const box=document.getElementById('rewrite-fb');
-  const txt=document.getElementById('rewrite-fb-text');
-  box.style.display='block';txt.textContent='⏳ Checking your answer...';
-  const prompt=`You are Miss Milagros, a friendly English teacher for Grade 4 students (9-10 years old). A student rewrote this paragraph replacing overused words:
-ORIGINAL: "Yesterday was a good day. We visited a big museum. It was very interesting and the guide was nice. I felt happy because it was a fun trip."
-STUDENT'S VERSION: "${ans}"
-Give warm, encouraging feedback in 2-3 sentences. Mention which overused words they replaced well. If they missed any, gently suggest a better alternative. Keep it short, positive, and easy for a 9-year-old to understand. Start with an encouragement like "Great work!" or "Well done!".`;
-  try{const r=await callClaude(prompt);txt.textContent=r;}
-  catch(e){txt.textContent="Sorry, couldn't connect to Claude. Check your internet connection and try again!";}
+  const box = document.getElementById('rewrite-fb');
+  const txt = document.getElementById('rewrite-fb-text');
+  box.style.display='block';
+
+  const goodWords = ['outstanding','brilliant','excellent','fantastic','wonderful','magnificent','splendid',
+    'enormous','gigantic','vast','colossal','immense','massive',
+    'captivating','fascinating','gripping','thrilling','remarkable','extraordinary',
+    'welcoming','delightful','pleasant','charming','gracious','lovely',
+    'delighted','thrilled','overjoyed','ecstatic','elated','jubilant',
+    'exhilarating','entertaining','exciting','spectacular','unforgettable'];
+  const badWords = ['good','big','interesting','nice','happy','fun'];
+
+  let found = goodWords.filter(w => ans.includes(w));
+  let missed = badWords.filter(w => ans.includes(w));
+
+  let msg = '';
+  if(found.length >= 4){
+    msg = `⭐ Excellent work! You replaced overused words with great alternatives like: <strong>${found.slice(0,3).join(', ')}</strong>. Your writing sounds much more vivid and precise now!`;
+  } else if(found.length >= 2){
+    msg = `👍 Good effort! You used some great words like <strong>${found.join(', ')}</strong>. `;
+    if(missed.length > 0) msg += `Try also replacing: <strong>${missed.join(', ')}</strong> — check the Introduction tab for ideas!`;
+  } else {
+    msg = `💪 Keep trying! Look for the words in <span style="color:#c92a2a">red</span> and replace each one. Go back to the Introduction tab to find better alternatives. You can do it!`;
+    if(missed.length > 0) msg += ` Words still to replace: <strong>${missed.join(', ')}</strong>.`;
+  }
+  txt.innerHTML = msg;
 }
 
-async function checkAudWriting(){
-  const ans=document.getElementById('aud-writing').value.trim();
+// ── AUDIENCE CHECK (offline) ──────────────────────────────────────────────────
+function checkAudWriting(){
+  const ans = document.getElementById('aud-writing').value.trim().toLowerCase();
   if(!ans){alert("Please write your message first!");return;}
   if(!selectedAud){alert("Please choose an audience first!");return;}
-  const box=document.getElementById('aud-fb');
-  const txt=document.getElementById('aud-fb-text');
-  box.style.display='block';txt.textContent='⏳ Checking your answer...';
-  const prompt=`You are Miss Milagros, a friendly English teacher for Grade 4 students (9-10 years old).
-A student chose to write for a "${selectedAud}" about this situation: "You forgot your PE kit at school today."
-Their message: "${ans}"
-Check if they used the right language style for a "${selectedAud}":
-- Friend: informal, casual, exclamations, personal, maybe emoji
-- Teacher: polite, formal, complete sentences, respectful, Dear/Thank you
-- Parent: organised, clear, includes details, informative
-- Younger children: simple words, short sentences, positive, instructive
-Give warm encouraging feedback in 2-3 sentences. Say what they did well and one specific thing to improve. Keep it simple and positive for a 9-year-old. Start with "Well done!" or similar.`;
-  try{const r=await callClaude(prompt);txt.textContent=r;}
-  catch(e){txt.textContent="Sorry, couldn't connect to Claude. Check your internet connection and try again!";}
+  const box = document.getElementById('aud-fb');
+  const txt = document.getElementById('aud-fb-text');
+  box.style.display='block';
+
+  const checks = {
+    'Friend':{ formal:['dear','sincerely','regards','thank you for'], informal:['!','hey','omg','lol','haha','oops','ugh','can you','help me'], tip:'Use informal language, exclamation marks, and casual words like "Hey!" or "Oops!"' },
+    'Teacher':{ formal:['dear','sincerely','thank you','would like','i am sorry','i apologise','respectfully'], informal:['omg','lol','hey!!','haha'], tip:'Use "Dear Mrs/Mr...", polite complete sentences, and end with "Thank you."' },
+    'Parent':{ formal:['please','will be','has been','inform','kindly','reminder'], informal:['omg','lol','haha'], tip:'Include details, use clear organised language, and a polite tone.' },
+    'Younger children':{ formal:[], informal:['walk','stop','be','use','remember','always','never','please'], tip:'Use short sentences, simple words, and positive instructions like "Walk slowly!"' }
+  };
+
+  const rule = checks[selectedAud];
+  if(!rule){txt.textContent="Please select an audience first!";return;}
+
+  const hasGood = rule.formal.length===0 ? rule.informal.some(w=>ans.includes(w)) : rule.formal.some(w=>ans.includes(w));
+  const hasBad  = rule.informal.some && rule.informal.length>0 && selectedAud!=='Younger children' ? rule.informal.some(w=>ans.includes(w)) : false;
+
+  let msg='';
+  if(hasGood && !hasBad){
+    msg=`⭐ Well done! Your message uses the right style for a <strong>${selectedAud}</strong>. ${selectedAud==='Teacher'?'It is polite and formal — great!':selectedAud==='Friend'?'It sounds casual and friendly — perfect!':selectedAud==='Parent'?'It is clear and informative — excellent!':'It uses simple, direct language — perfect for younger children!'}`;
+  } else if(hasBad){
+    msg=`💡 Your message sounds a bit too informal for a <strong>${selectedAud}</strong>. ${rule.tip}`;
+  } else {
+    msg=`👍 Good try! Remember: ${rule.tip} Have another look and try again!`;
+  }
+  txt.innerHTML=msg;
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
